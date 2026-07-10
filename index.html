@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growthline Digital — Websites, SEO & Ads That Grow Your Business</title>
+<meta name="description" content="Growthline Digital builds websites and runs SEO, Google Ads & Meta Ads campaigns that bring real customers. Get a free quote on WhatsApp today.">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg: #0B1120;
+  --surface: #101a30;
+  --surface-2: #16213d;
+  --line: rgba(232,236,245,0.10);
+  --text: #E8ECF5;
+  --muted: #8B96AC;
+  --accent: #00D9A3;      /* growth green */
+  --accent-dim: #00a37a;
+  --amber: #FFB020;       /* ads / attention */
+  --danger-call: #22c55e;
+  --whatsapp: #25D366;
+  --radius: 14px;
+  --maxw: 1180px;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(0,217,163,0.10), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(255,176,32,0.07), transparent 40%);
+  pointer-events:none;
+  z-index:0;
+}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+section{position:relative;z-index:1;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-0.01em;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+/* ============ NAV ============ */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(11,17,32,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav{
+  max-width:var(--maxw);margin:0 auto;padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;font-size:20px;
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent),var(--amber));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);color:#04140f;font-weight:700;font-size:14px;
+}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:14.5px;color:var(--muted);transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{
+  background:var(--accent);color:#04140f;
+  padding:10px 20px;border-radius:999px;font-weight:600;font-size:14px;
+  transition:transform .2s, box-shadow .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,217,163,0.3);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+.burger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  padding:8px 24px 20px;
+  gap:14px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--muted);font-size:15px;padding:6px 0;}
+.mobile-menu .nav-cta{align-self:flex-start;margin-top:4px;}
+
+/* ============ HERO ============ */
+.hero{padding:88px 0 60px;position:relative;}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
+}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.08;margin-bottom:20px;}
+.hero h1 .hl{color:var(--accent);}
+.hero p.lead{color:var(--muted);font-size:17px;max-width:520px;margin-bottom:32px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;
+  cursor:pointer;border:none;transition:transform .2s, box-shadow .2s, background .2s;
+}
+.btn-primary{background:var(--accent);color:#04140f;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,217,163,0.32);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--line);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+.hero-stats .stat b{
+  font-family:var(--font-mono);font-size:26px;color:var(--text);display:block;
+}
+.hero-stats .stat span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+
+/* Growth chart signature */
+.chart-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px 22px 18px;
+  position:relative;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+}
+.chart-card .chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+.chart-card .chart-head b{font-family:var(--font-mono);font-size:13px;color:var(--muted);letter-spacing:.05em;}
+.chart-card .chart-head .up{color:var(--accent);font-family:var(--font-mono);font-size:14px;font-weight:700;}
+.chart-svg path.line{
+  fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:600;stroke-dashoffset:600;
+  animation:draw 2.4s ease forwards .3s;
+}
+.chart-svg path.area{fill:url(#areaFill);opacity:0;animation:fadein 1s ease forwards 1.6s;}
+.chart-svg circle{fill:var(--amber);opacity:0;animation:fadein .6s ease forwards 2.2s;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+@keyframes fadein{to{opacity:1;}}
+.chart-labels{display:flex;justify-content:space-between;margin-top:6px;}
+.chart-labels span{font-family:var(--font-mono);font-size:11px;color:var(--muted);}
+.chart-badges{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.chart-badge{
+  font-family:var(--font-mono);font-size:11.5px;color:var(--text);
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:6px 12px;border-radius:8px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .chart-svg path.line{animation:none;stroke-dashoffset:0;}
+  .chart-svg path.area, .chart-svg circle{animation:none;opacity:1;}
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ============ SECTION HEADERS ============ */
+.section-head{max-width:640px;margin-bottom:52px;}
+.section-head h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:14px;}
+.section-head p{color:var(--muted);font-size:16px;}
+.section-pad{padding:90px 0;}
+.section-pad.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+/* ============ SERVICES ============ */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.service-card{
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px 24px;
+  transition:transform .25s, border-color .25s, background .25s;
+}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(0,217,163,0.4);background:#182647;}
+.service-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,217,163,0.12);color:var(--accent);
+  margin-bottom:20px;
+}
+.service-icon svg{width:24px;height:24px;}
+.service-card h3{font-size:18.5px;margin-bottom:10px;}
+.service-card p{color:var(--muted);font-size:14.5px;}
+.service-card .tag{
+  display:inline-block;margin-top:16px;font-family:var(--font-mono);
+  font-size:11px;color:var(--amber);letter-spacing:.05em;
+}
+
+/* ============ WHY / STATS ============ */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.why-list{display:flex;flex-direction:column;gap:22px;}
+.why-item{display:flex;gap:16px;}
+.why-item .num{
+  font-family:var(--font-mono);color:var(--accent);font-size:14px;
+  border:1px solid var(--line);width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.why-item h4{font-size:16.5px;margin-bottom:4px;}
+.why-item p{color:var(--muted);font-size:14.5px;}
+.stat-panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;
+  padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px;
+}
+.stat-panel .stat b{
+  font-family:var(--font-mono);font-size:32px;color:var(--accent);display:block;
+}
+.stat-panel .stat span{color:var(--muted);font-size:13px;}
+
+/* ============ PROCESS ============ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.process-card{position:relative;padding:28px 22px;border-left:2px solid var(--line);}
+.process-card .step{
+  font-family:var(--font-mono);font-size:34px;color:var(--line);
+  font-weight:700;display:block;margin-bottom:14px;
+}
+.process-card.active .step, .process-card:hover .step{color:var(--accent);}
+.process-card h4{font-size:17px;margin-bottom:8px;}
+.process-card p{color:var(--muted);font-size:14px;}
+
+/* ============ PRICING ============ */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.price-card{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 26px;display:flex;flex-direction:column;
+}
+.price-card.featured{border-color:var(--accent);background:linear-gradient(160deg,#132a24,var(--surface-2));position:relative;}
+.price-card.featured::before{
+  content:"MOST POPULAR";position:absolute;top:-1px;right:20px;
+  background:var(--accent);color:#04140f;font-family:var(--font-mono);
+  font-size:10.5px;letter-spacing:.06em;padding:5px 12px;border-radius:0 0 8px 8px;
+}
+.price-card h3{font-size:20px;margin-bottom:6px;}
+.price-card .price{font-family:var(--font-mono);font-size:32px;color:var(--text);margin:16px 0 4px;}
+.price-card .price span{font-size:13px;color:var(--muted);font-weight:400;}
+.price-card .desc{color:var(--muted);font-size:13.5px;margin-bottom:22px;}
+.price-card ul{display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex-grow:1;}
+.price-card ul li{font-size:14px;color:var(--text);display:flex;gap:10px;align-items:flex-start;}
+.price-card ul li::before{content:"✓";color:var(--accent);font-weight:700;}
+.price-card .btn{width:100%;justify-content:center;}
+
+/* ============ TESTIMONIALS ============ */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;
+}
+.testi-card .stars{color:var(--amber);letter-spacing:2px;margin-bottom:14px;font-size:14px;}
+.testi-card p{font-size:14.5px;color:var(--text);margin-bottom:18px;}
+.testi-who{display:flex;align-items:center;gap:12px;}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--amber));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-weight:700;color:#04140f;font-size:14px;
+}
+.testi-who b{font-size:14px;display:block;}
+.testi-who span{font-size:12.5px;color:var(--muted);}
+
+/* ============ CTA BANNER ============ */
+.cta-banner{
+  background:linear-gradient(120deg,#0d3a30,#0b1120 70%);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:56px 46px;
+  display:flex;justify-content:space-between;align-items:center;gap:30px;
+  flex-wrap:wrap;
+}
+.cta-banner h2{font-size:clamp(24px,3vw,32px);max-width:520px;}
+.cta-banner p{color:var(--muted);margin-top:10px;max-width:480px;}
+.cta-buttons{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+.contact-info h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:16px;}
+.contact-info p{color:var(--muted);margin-bottom:28px;}
+.contact-block{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;}
+.contact-block .ic{
+  width:42px;height:42px;border-radius:10px;background:rgba(0,217,163,0.12);
+  color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.contact-block h4{font-size:15px;margin-bottom:3px;}
+.contact-block p{margin:0;color:var(--muted);font-size:14px;}
+.contact-block a{color:var(--text);}
+.contact-form{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;display:flex;flex-direction:column;gap:16px;
+}
+.contact-form label{font-size:13px;color:var(--muted);margin-bottom:6px;display:block;}
+.contact-form input, .contact-form select, .contact-form textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+  padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:14px;
+  transition:border-color .2s;
+}
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{border-color:var(--accent);outline:none;}
+.contact-form textarea{resize:vertical;min-height:90px;}
+.form-note{font-size:12.5px;color:var(--muted);}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:44px 0 30px;background:var(--surface);}
+.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:30px;}
+.footer-brand p{color:var(--muted);font-size:13.5px;max-width:280px;margin-top:10px;}
+.footer-links{display:flex;gap:60px;flex-wrap:wrap;}
+.footer-links h5{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
+.footer-links a{display:block;font-size:14px;color:var(--text);opacity:.85;margin-bottom:10px;}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:20px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-size:12.5px;color:var(--muted);
+}
+
+/* ============ FLOATING CALL/WHATSAPP TOGGLE ============ */
+.fab-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  display:flex;flex-direction:column;align-items:flex-end;gap:14px;
+}
+.fab-option{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:10px 16px 10px 12px;border-radius:999px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.4);
+  opacity:0;transform:translateY(14px) scale(.9);
+  pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+  font-size:14px;font-weight:600;
+}
+.fab-wrap.open .fab-option{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.fab-wrap.open .fab-option.opt-call{transition-delay:.05s;}
+.fab-wrap.open .fab-option.opt-msg{transition-delay:.12s;}
+.fab-option .fab-ic{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.opt-call .fab-ic{background:rgba(34,197,94,0.18);color:var(--danger-call);}
+.opt-msg .fab-ic{background:rgba(37,211,102,0.18);color:var(--whatsapp);}
+.fab-option:hover{border-color:var(--accent);}
+.fab-main{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:none;
+  box-shadow:0 14px 30px rgba(0,217,163,0.4);
+  position:relative;
+  color:#04140f;
+}
+.fab-main::after{
+  content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid var(--accent);opacity:.5;
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{0%{transform:scale(.9);opacity:.6;}70%{transform:scale(1.5);opacity:0;}100%{opacity:0;}}
+.fab-main svg{width:24px;height:24px;transition:transform .3s ease;}
+.fab-main .icon-close{position:absolute;opacity:0;transform:rotate(-45deg) scale(.5);}
+.fab-main .icon-open{opacity:1;transform:rotate(0) scale(1);}
+.fab-wrap.open .fab-main .icon-open{opacity:0;transform:rotate(45deg) scale(.5);}
+.fab-wrap.open .fab-main .icon-close{opacity:1;transform:rotate(0) scale(1);}
+.fab-wrap.open .fab-main::after{display:none;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .hero-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
+  .testi-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .stat-panel{grid-template-columns:1fr 1fr;}
+}
+@media (max-width: 560px){
+  .services-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr;}
+  .hero{padding:64px 0 40px;}
+  .section-pad{padding:64px 0;}
+  .cta-banner{padding:36px 26px;}
+  .hero-stats{gap:22px;}
+  .fab-main{width:54px;height:54px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <span class="logo-mark">GL</span>
+      Growthline Digital
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get Free Quote</a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get Free Quote</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Website · SEO · Google Ads · Meta Ads</div>
+        <h1>We build websites and run ads that turn <span class="hl">clicks into customers.</span></h1>
+        <p class="lead">Growthline Digital is a performance-first agency — we design fast, modern websites and manage SEO, Google Ads and Meta Ads campaigns that get your business found, clicked, and chosen.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/919670049794?text=Hi%2C%20I%20want%20a%20free%20quote%20for%20my%20website%2FAds" class="btn btn-primary" target="_blank" rel="noopener">
+            Chat on WhatsApp
+          </a>
+          <a href="#services" class="btn btn-outline">See our services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>120+</b><span>Websites launched</span></div>
+          <div class="stat"><b>3.4x</b><span>Avg. ad ROI lift</span></div>
+          <div class="stat"><b>65+</b><span>SEO campaigns ranked</span></div>
+        </div>
+      </div>
+
+      <div class="chart-card reveal">
+        <div class="chart-head">
+          <b>ORGANIC + AD TRAFFIC</b>
+          <span class="up">▲ 214%</span>
+        </div>
+        <svg class="chart-svg" viewBox="0 0 300 140" width="100%" height="150">
+          <defs>
+            <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00D9A3" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#00D9A3" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="area" d="M0,120 L30,110 L60,116 L90,90 L120,95 L150,70 L180,75 L210,45 L240,50 L270,20 L300,15 L300,140 L0,140 Z"/>
+          <path class="line" d="M0,120 L30,110 L60,116 L90,90 L120,95 L150,70 L180,75 L210,45 L240,50 L270,20 L300,15"/>
+          <circle cx="300" cy="15" r="5"/>
+        </svg>
+        <div class="chart-labels">
+          <span>WEEK 1</span><span>WEEK 4</span><span>WEEK 8</span><span>WEEK 12</span>
+        </div>
+        <div class="chart-badges">
+          <span class="chart-badge">#1 on Google</span>
+          <span class="chart-badge">CTR ↑ 3.2%</span>
+          <span class="chart-badge">CPL ↓ 41%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">What we do</div>
+        <h2>Everything your business needs to be found online</h2>
+        <p>From your first website to your next ad campaign, we handle the strategy, design and execution — you just handle the customers.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/><circle cx="6" cy="6" r="0.5"/></svg>
+          </div>
+          <h3>Website Design</h3>
+          <p>Fast, mobile-friendly websites built to convert visitors into leads — landing pages, business sites and online stores.</p>
+          <span class="tag">DESIGN + BUILD</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          </div>
+          <h3>SEO</h3>
+          <p>On-page, technical and local SEO to help you rank higher on Google and get consistent, free organic traffic.</p>
+          <span class="tag">RANK ON GOOGLE</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><path d="M12 2c-2.5 3-4 7-4 10s1.5 7 4 10c2.5-3 4-7 4-10s-1.5-7-4-10z"/></svg>
+          </div>
+          <h3>Google Ads</h3>
+          <p>Search, Display and YouTube campaigns managed and optimised to bring qualified leads at the lowest cost per click.</p>
+          <span class="tag">PPC MANAGEMENT</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="16.5" cy="7.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h3>Meta Ads</h3>
+          <p>Facebook & Instagram ad campaigns with sharp targeting and creative that stop the scroll and drive real sales.</p>
+          <span class="tag">SOCIAL ADS</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY / STATS ============ -->
+  <section class="section-pad alt">
+    <div class="wrap why-grid">
+      <div class="reveal">
+        <div class="eyebrow">Why Growthline</div>
+        <h2 style="font-size:clamp(26px,3.2vw,34px);margin-bottom:26px;">We don't just deliver services, we deliver results you can measure</h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="num">1</div>
+            <div><h4>One team, every channel</h4><p>Website, SEO and Ads working together instead of three different vendors pulling in different directions.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="num">2</div>
+            <div><h4>Transparent reporting</h4><p>Clear monthly reports showing traffic, leads and ad spend — no jargon, just what actually happened.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="num">3</div>
+            <div><h4>Built for small & growing businesses</h4><p>Packages priced for local shops, clinics, coaches and startups — not just big brands.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-panel reveal">
+        <div class="stat"><b>4.9★</b><span>Average client rating</span></div>
+        <div class="stat"><b>48h</b><span>Avg. campaign launch time</span></div>
+        <div class="stat"><b>500+</b><span>Ads campaigns run</span></div>
+        <div class="stat"><b>92%</b><span>Client retention rate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="section-pad" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our process</div>
+        <h2>From first call to first sale, in four steps</h2>
+        <p>A simple, proven workflow we follow for every single client.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card active reveal">
+          <span class="step">01</span>
+          <h4>Discover</h4>
+          <p>We understand your business, customers and goals on a free WhatsApp or call consultation.</p>
+        </div>
+        <div class="process-card reveal">
+          <span class="step">02</span>
+          <h4>Strategy</h4>
+          <p>We design your website structure and plan your SEO / ad strategy around your budget.</p>
+        </div>
+        <div class="process-card reveal">
+          <span class="step">03</span>
+          <h4>Launch</h4>
+          <p>Website goes live, SEO setup begins, and your first Google & Meta ad campaigns start running.</p>
+        </div>
+        <div class="process-card reveal">
+          <span class="step">04</span>
+          <h4>Grow</h4>
+          <p>We monitor, test and optimise every week so your traffic and leads keep climbing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section class="section-pad alt" id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Packages</div>
+        <h2>Simple pricing, no hidden charges</h2>
+        <p>Pick a package to start, or message us on WhatsApp for a plan built around your exact budget.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card reveal">
+          <h3>Starter</h3>
+          <p class="desc">For new businesses that need a solid first website.</p>
+          <div class="price">₹6,999<span> one-time</span></div>
+          <ul>
+            <li>5-page responsive website</li>
+            <li>Mobile & speed optimised</li>
+            <li>Basic on-page SEO setup</li>
+            <li>WhatsApp button integration</li>
+            <li>7-day delivery</li>
+          </ul>
+          <a href="https://wa.me/919670049794?text=Hi%2C%20interested%20in%20the%20Starter%20package" class="btn btn-outline" target="_blank" rel="noopener">Choose Starter</a>
+        </div>
+
+        <div class="price-card featured reveal">
+          <h3>Growth</h3>
+          <p class="desc">Our most popular plan — website + ongoing SEO & ads.</p>
+          <div class="price">₹14,999<span>/month</span></div>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Monthly SEO optimisation</li>
+            <li>Google Ads setup & management</li>
+            <li>Meta Ads setup & management</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <a href="https://wa.me/919670049794?text=Hi%2C%20interested%20in%20the%20Growth%20package" class="btn btn-primary" target="_blank" rel="noopener">Choose Growth</a>
+        </div>
+
+        <div class="price-card reveal">
+          <h3>Enterprise</h3>
+          <p class="desc">For businesses ready to scale aggressively.</p>
+          <div class="price">Custom<span> quote</span></div>
+          <ul>
+            <li>Custom website / e-commerce</li>
+            <li>Advanced technical SEO</li>
+            <li>Multi-platform ad management</li>
+            <li>Dedicated account manager</li>
+            <li>Weekly strategy calls</li>
+          </ul>
+          <a href="https://wa.me/919670049794?text=Hi%2C%20I%20need%20a%20custom%20quote" class="btn btn-outline" target="_blank" rel="noopener">Talk to us</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section-pad" id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Client results</div>
+        <h2>What business owners say about working with us</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>Our clinic website went live in a week and within a month we were ranking on the first page of Google for local searches.</p>
+          <div class="testi-who">
+            <div class="testi-avatar">RS</div>
+            <div><b>Rohit Sharma</b><span>Dental Clinic Owner</span></div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>Our Meta Ads cost per lead dropped by nearly half after they took over our account. Reporting is clear every single month.</p>
+          <div class="testi-who">
+            <div class="testi-avatar">PK</div>
+            <div><b>Priya Kapoor</b><span>Boutique Store Owner</span></div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>Fast communication on WhatsApp, honest advice, and our Google Ads finally started converting instead of just spending budget.</p>
+          <div class="testi-who">
+            <div class="testi-avatar">AV</div>
+            <div><b>Ankit Verma</b><span>Coaching Institute</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="section-pad alt">
+    <div class="wrap">
+      <div class="cta-banner reveal">
+        <div>
+          <h2>Ready to get more traffic, leads and sales?</h2>
+          <p>Message us on WhatsApp right now — get a free website & ads audit within 24 hours, no obligation.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="https://wa.me/919670049794?text=Hi%2C%20I%20want%20a%20free%20audit" class="btn btn-primary" target="_blank" rel="noopener">Get Free Audit</a>
+          <a href="tel:+919670049794" class="btn btn-outline">Call Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section-pad" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Let's talk about your website & ads</h2>
+        <p>Fill the form or reach us directly on WhatsApp — we usually reply within a few hours.</p>
+
+        <div class="contact-block">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5c0 9 7 16 16 16l2-4-6-2-2 2c-3-1-5-3-6-6l2-2-2-6z"/></svg></div>
+          <div><h4>Call us</h4><p><a href="tel:+919670049794">+91 96700 49794</a></p></div>
+        </div>
+        <div class="contact-block">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div><h4>WhatsApp</h4><p><a href="https://wa.me/919670049794" target="_blank" rel="noopener">+91 96700 49794</a></p></div>
+        </div>
+        <div class="contact-block">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><h4>Working hours</h4><p>Mon – Sat, 10:00 AM – 7:00 PM</p></div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="leadForm">
+        <div>
+          <label for="fname">Your name</label>
+          <input type="text" id="fname" name="name" placeholder="Enter your name" required>
+        </div>
+        <div>
+          <label for="fphone">Phone number</label>
+          <input type="tel" id="fphone" name="phone" placeholder="+91" required>
+        </div>
+        <div>
+          <label for="fservice">Service needed</label>
+          <select id="fservice" name="service">
+            <option>Website Design</option>
+            <option>SEO</option>
+            <option>Google Ads</option>
+            <option>Meta Ads</option>
+            <option>All of the above</option>
+          </select>
+        </div>
+        <div>
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" name="message" placeholder="Tell us a bit about your business..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-content:center;">Send via WhatsApp</button>
+        <p class="form-note">Clicking send will open WhatsApp with your details pre-filled — nothing is stored on this site.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-mark">GL</span>Growthline Digital</div>
+        <p>Websites, SEO, Google Ads & Meta Ads for businesses that want real, measurable growth.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h5>Services</h5>
+          <a href="#services">Website Design</a>
+          <a href="#services">SEO</a>
+          <a href="#services">Google Ads</a>
+          <a href="#services">Meta Ads</a>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <a href="#process">Process</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <a href="tel:+919670049794">+91 96700 49794</a>
+          <a href="https://wa.me/919670049794" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Growthline Digital. All rights reserved.</span>
+      <span>Made with care for growing businesses.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING CALL / WHATSAPP TOGGLE ============ -->
+<div class="fab-wrap" id="fabWrap">
+  <a href="tel:+919670049794" class="fab-option opt-call">
+    <span class="fab-ic">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5c0 9 7 16 16 16l2-4-6-2-2 2c-3-1-5-3-6-6l2-2-2-6z"/></svg>
+    </span>
+    Call Now
+  </a>
+  <a href="https://wa.me/919670049794?text=Hi%2C%20I%20found%20you%20on%20your%20website" target="_blank" rel="noopener" class="fab-option opt-msg">
+    <span class="fab-ic">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.5-1.9-.6-.7-1-1.4-1.3-2-.1-.2 0-.4.1-.5.1-.1.6-.7.8-1 .1-.2.1-.4 0-.5-.1-.2-.7-1.7-.9-2.2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1 2.8c.1.2 1.7 2.6 4.1 3.6 2 .8 2.5.6 2.9.6.4 0 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+    </span>
+    Message
+  </a>
+  <button class="fab-main" id="fabToggle" aria-label="Toggle call and message options" aria-expanded="false">
+    <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5c0 9 7 16 16 16l2-4-6-2-2 2c-3-1-5-3-6-6l2-2-2-6z"/></svg>
+    <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+
+<script>
+// Mobile menu toggle
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// Scroll reveal animation
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+
+// Floating call/message toggle button
+const fabWrap = document.getElementById('fabWrap');
+const fabToggle = document.getElementById('fabToggle');
+fabToggle.addEventListener('click', () => {
+  const isOpen = fabWrap.classList.toggle('open');
+  fabToggle.setAttribute('aria-expanded', isOpen);
+});
+// Close FAB when clicking outside
+document.addEventListener('click', (e) => {
+  if (!fabWrap.contains(e.target)) {
+    fabWrap.classList.remove('open');
+    fabToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Lead form -> send via WhatsApp
+const leadForm = document.getElementById('leadForm');
+leadForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  const service = document.getElementById('fservice').value;
+  const msg = document.getElementById('fmsg').value.trim();
+
+  const text = `Hi, I'm ${name} (${phone}). I'm interested in: ${service}. ${msg}`;
+  const url = `https://wa.me/919670049794?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+});
+</script>
+
+</body>
+</html>
